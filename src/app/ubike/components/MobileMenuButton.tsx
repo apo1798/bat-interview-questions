@@ -1,6 +1,6 @@
 'use client';
 
-import { useLayoutEffect, useState } from 'react';
+import { useState } from 'react';
 import { HiXMark, HiBars3 } from 'react-icons/hi2';
 import { navItems } from '@/app/ubike/layout';
 import Link from 'next/link';
@@ -9,21 +9,10 @@ import useResize from '@/hooks/useResize';
 
 const MobileMenuButton = () => {
   const [open, setOpen] = useState(false);
-  const [menuFromTop, setMenuFromTop] = useState(0);
 
   useResize(() => {
     setOpen(false);
   }, open);
-
-  useLayoutEffect(() => {
-    const header = document.querySelector('#header-contaienr');
-    if (!header) return;
-
-    setMenuFromTop(0);
-
-    const { bottom } = header.getBoundingClientRect();
-    setMenuFromTop((state) => state + bottom);
-  }, [open]);
 
   return (
     <div className='ml-auto flex items-center md:hidden'>

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import './globals.css';
 import { Noto_Sans_TC } from 'next/font/google';
-import QueryProvider from '@/app/components/QueryProvider';
 import { Metadata } from 'next';
 
 const font = Noto_Sans_TC({
@@ -33,20 +32,18 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={font.className + ' flex min-h-screen flex-col'}>
-        <QueryProvider>
-          <header className='bg-amber-100 py-1'>
-            <ul className='container flex gap-2'>
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className='hover:text-amber-500'>
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </header>
-          <div className='grow'>{children}</div>
-        </QueryProvider>
+        <header className='bg-amber-100 py-1'>
+          <ul className='container flex gap-2'>
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className='hover:text-amber-500'>
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </header>
+        <div className='grow'>{children}</div>
       </body>
     </html>
   );
